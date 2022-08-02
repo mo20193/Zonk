@@ -1,0 +1,8 @@
+C:\Users\Mohammad.El-Masri\Desktop\github\Artikelverwaltung\Wahrscheinlichkeiten\Wahrscheinlichkeiten\bin\Debug\Wahrscheinlichkeiten.exe.config
+C:\Users\Mohammad.El-Masri\Desktop\github\Artikelverwaltung\Wahrscheinlichkeiten\Wahrscheinlichkeiten\bin\Debug\Wahrscheinlichkeiten.exe
+C:\Users\Mohammad.El-Masri\Desktop\github\Artikelverwaltung\Wahrscheinlichkeiten\Wahrscheinlichkeiten\bin\Debug\Wahrscheinlichkeiten.pdb
+C:\Users\Mohammad.El-Masri\Desktop\github\Artikelverwaltung\Wahrscheinlichkeiten\Wahrscheinlichkeiten\obj\Debug\Wahrscheinlichkeiten.csproj.AssemblyReference.cache
+C:\Users\Mohammad.El-Masri\Desktop\github\Artikelverwaltung\Wahrscheinlichkeiten\Wahrscheinlichkeiten\obj\Debug\Wahrscheinlichkeiten.csproj.SuggestedBindingRedirects.cache
+C:\Users\Mohammad.El-Masri\Desktop\github\Artikelverwaltung\Wahrscheinlichkeiten\Wahrscheinlichkeiten\obj\Debug\Wahrscheinlichkeiten.csproj.CoreCompileInputs.cache
+C:\Users\Mohammad.El-Masri\Desktop\github\Artikelverwaltung\Wahrscheinlichkeiten\Wahrscheinlichkeiten\obj\Debug\Wahrscheinlichkeiten.exe
+C:\Users\Mohammad.El-Masri\Desktop\github\Artikelverwaltung\Wahrscheinlichkeiten\Wahrscheinlichkeiten\obj\Debug\Wahrscheinlichkeiten.pdb
