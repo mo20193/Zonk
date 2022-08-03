@@ -4,28 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//5 = 99
-//2 = 3
-//3 = 1
-//6 = 2mio
-//set = 2mio
-//7 = 44
-//8 = 1001
-//10 = 1mio
-//4 = 88
-//9 = 1
 
 namespace Wahrscheinlichkeiten
 {
-    //computer spielt gegen sich selber option: 10% 20% ....
-    //bei welcher prozentzahl ist die wahrscheinlichkeit am höchsten sich die größte zahl zu ermitteln
-    //GetRandomNumberFromList umschreiben -> wir fangen bei [0] an und zählen hoch. Doppelte einträge sind unzulässig!
-
     internal class Program
     {
         private static List<int> _listOfNumbers = new List<int>();
-        private static List<int> _listPaperBasket = new List<int>();
-        private static List<int> _percentNumbers = new List<int>();
+        private static List<int> _listIsWinning = new List<int>();
 
         private static Random _random = new Random();
 
@@ -40,6 +25,7 @@ namespace Wahrscheinlichkeiten
         private static int i = 0;
 
         private static int getCurrentNumber = 0;
+        private static int numberOfWinnings = 0;
 
         static void Main(string[] args)
         {
@@ -65,16 +51,18 @@ namespace Wahrscheinlichkeiten
 
                 if (!IsWinning())
                 {
-                    Console.WriteLine(" : WIN, BECAUSE BIGGEST NUMBER IS IN LIST.");
+                    Console.WriteLine("Win, because biggest number is in set.");
+                    numberOfWinnings++;
                 }
                 else
                 {
                     Console.WriteLine("Computer has lost. The biggest Number was " + maxNumberInList + ".");
                 }
 
-                Console.WriteLine(j + " --------------------------------------------------------------------------------------------------");
+                Console.WriteLine("Round: " + j + " --------------------------------------------------------------------------------------------------");
             }
 
+            Console.WriteLine("Number of winnings: " + numberOfWinnings);
             Console.ReadKey();
         }
 
