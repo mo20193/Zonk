@@ -10,12 +10,11 @@ namespace Wahrscheinlichkeiten
     internal class Program
     {
         private static List<int> _listOfNumbers = new List<int>();
-        private static List<int> _listIsWinning = new List<int>();
 
         private static Random _random = new Random();
 
         private const int min = 0;
-        private const int max = 101;
+        private const int max = 11;
         private const int percent = 20;
         private static int turns = 0;
         private static int currentlyNumberAfterCheck = 0;
@@ -68,10 +67,10 @@ namespace Wahrscheinlichkeiten
 
         private static void Reset()
         {
-            i = 0;
             _listOfNumbers.Clear();
             maxNumberInSet = 0;
             maxNumberInList = 0;
+            i = 0;
         }
 
         private static bool IsWinning()
@@ -117,7 +116,6 @@ namespace Wahrscheinlichkeiten
 
         private static int DetermineTurns(int percent)
         {
-            ;
 
             var numberOfTurns = _listOfNumbers.Count * percent / 100;
 
