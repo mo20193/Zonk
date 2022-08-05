@@ -4,6 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//const und readonly anschauen
+//static = klassenvariable
+
+//es soll 1000x mit 10%, 20% usw bis 90% spielen(in einem durchlauf) 1 Spiel == 100 durchläufe
+//es soll sich bei 10% seine avg der wins festhalten über die 1000 spiele. das auch bei 20%, 30% usw! am ende ausgeben beispiel:
+//10% AVG: Anzahl der gewonnenen spiele, auch bei 20, 30 usw
+
+//1 Durchlauf(100 spiele): WIN: 10
+//2.Durchlauf(100 spiele): WIN: 09
+//3.Durchlauf(100 spiele): WIN: 12
+
+//Aus diesen Werten, also 10, 09, 12 muss dann der durchschnitt ausgerechnet. AVG Selber programmieren!
+
+//Code refactorisierung -> so wenig static wie möglich. Methodem grundsätzlich das übergeben was sie brauchen, um zu funktionieren
 
 namespace Wahrscheinlichkeiten
 {
@@ -13,69 +27,69 @@ namespace Wahrscheinlichkeiten
 
         private static Random _random = new Random();
 
-        private const int min = 0;
-        private const int max = 11;
-        private const int percent = 20;
-        private static int turns = 0;
-        private static int currentlyNumberAfterCheck = 0;
+        private const int _min = 0;
+        private const int _max = 101;
+        private const int _percent = 4;
 
-        private static int maxNumberInSet = 0;
-        private static int maxNumberInList = 0;
-        private static int i = 0;
+        private static int _turns = 0;
+        private static int _currentlyNumberAfterCheck = 0;
+        private static int _maxNumberInSet = 0;
+        private static int _maxNumberInList = 0;
+        private static int _i = 0;
 
-        private static int getCurrentNumber = 0;
-        private static int numberOfWinnings = 0;
+        private static int _getCurrentNumber = 0;
+        private static int _numberOfWinnings = 0;
 
         static void Main(string[] args)
         {
-            for (int j = 0; j < max; j++)
+            for (int j = 0; j < _max; j++)
             {
                 Reset();
-
+                
                 InitializeList(_listOfNumbers);
 
-                maxNumberInList = GetMaxNumber();
+                _maxNumberInList = GetMaxNumber();
 
-                turns = DetermineTurns(percent);
-                maxNumberInSet = DetermineMaxNumberInSet();
+                _turns = DetermineTurns(_percent);
+                _maxNumberInSet = DetermineMaxNumberInSet();
 
-                Console.WriteLine("MAX NUMBER IN SET: " + maxNumberInSet);
+                Console.WriteLine("MAX NUMBER IN SET: " + _maxNumberInSet);
 
                 do
                 {
-                    currentlyNumberAfterCheck = _listOfNumbers[i];
-                    i++;
+                    _currentlyNumberAfterCheck = _listOfNumbers[_i];
+                    _i++;
 
-                } while (!IsWinning() && i < max);
+                } while (!AssumedMaxNumber() && _i < _max);
 
-                if (!IsWinning())
-                {
-                    Console.WriteLine("Win, because biggest number is in set.");
-                    numberOfWinnings++;
+                if (_currentlyNumberAfterCheck == _maxNumberInList)
+                {                    
+                    Console.WriteLine($"W I N. AssumedMaxNumber: {_currentlyNumberAfterCheck} ActualMaxNumber {_maxNumberInList} index: {_i}" );
+                    _numberOfWinnings++;
                 }
                 else
                 {
-                    Console.WriteLine("Computer has lost. The biggest Number was " + maxNumberInList + ".");
+                    Console.WriteLine($"L O S T. AssumedMaxNumber: {_currentlyNumberAfterCheck} ActualMaxNumber {_maxNumberInList} index: {_i}.");
                 }
-
+                
                 Console.WriteLine("Round: " + j + " --------------------------------------------------------------------------------------------------");
             }
 
-            Console.WriteLine("Number of winnings: " + numberOfWinnings);
+            Console.WriteLine("Number of winnings: " + _numberOfWinnings);
             Console.ReadKey();
         }
 
         private static void Reset()
         {
             _listOfNumbers.Clear();
-            maxNumberInSet = 0;
-            maxNumberInList = 0;
-            i = 0;
+            _maxNumberInSet = 0;
+            _maxNumberInList = 0;
+            _i = 0;
         }
 
-        private static bool IsWinning()
+        private static bool AssumedMaxNumber() //angenommen, vermutlich
         {
-            if (currentlyNumberAfterCheck > maxNumberInSet)
+            if (_currentlyNumberAfterCheck > _maxNumberInSet)
             {
                 return true;
             }
@@ -86,19 +100,19 @@ namespace Wahrscheinlichkeiten
         private static int DetermineMaxNumberInSet()
         {
 
-            while (i < turns)
+            while (_i < _turns)
             {
-                getCurrentNumber = _listOfNumbers[i];
+                _getCurrentNumber = _listOfNumbers[_i];
 
-                i++;
+                _i++;
 
-                if (getCurrentNumber > maxNumberInSet)
+                if (_getCurrentNumber > _maxNumberInSet)
                 {
-                    maxNumberInSet = getCurrentNumber;
+                    _maxNumberInSet = _getCurrentNumber;
                 }
             }
 
-            return maxNumberInSet;
+            return _maxNumberInSet;
         }
 
         private static void ShowCountFromList()
@@ -109,8 +123,8 @@ namespace Wahrscheinlichkeiten
         private static void ShowMaxNumberInList()
         {
             Console.WriteLine();
-            maxNumberInList = GetMaxNumber();
-            Console.WriteLine("MAX NUMBER IN LIST: " + maxNumberInList);
+            _maxNumberInList = GetMaxNumber();
+            Console.WriteLine("MAX NUMBER IN LIST: " + _maxNumberInList);
             Console.WriteLine();
         }
 
@@ -126,7 +140,7 @@ namespace Wahrscheinlichkeiten
         {
             var max = _listOfNumbers[0];
 
-            for (int i = 0; i < _listOfNumbers.Count; i++)
+            for (var i = 0; i < _listOfNumbers.Count; i++)
             {
                 var item = _listOfNumbers[i];
 
@@ -141,7 +155,7 @@ namespace Wahrscheinlichkeiten
 
         private static void ShowNumbersInList()
         {
-            foreach (int number in _listOfNumbers)
+            foreach (var number in _listOfNumbers)
             {
                 Console.WriteLine(number);
             }
@@ -151,7 +165,7 @@ namespace Wahrscheinlichkeiten
         {
             var currentNumber = 0;
 
-            while (_list.Count < max)
+            while (_list.Count < _max)
             {
                 currentNumber = GetRandom();
 
@@ -164,9 +178,9 @@ namespace Wahrscheinlichkeiten
 
         private static int GetRandom()
         {
-            var z = _random.Next(min, max);
+            var newRandomNumber = _random.Next(_min, _max);
 
-            return z;
+            return newRandomNumber;
         }
     }
 }
