@@ -14,3 +14,11 @@ C:\Users\DELL\OneDrive\Desktop\github\Zonk\Wahrscheinlichkeiten\obj\Debug\Wahrsc
 C:\Users\DELL\OneDrive\Desktop\github\Zonk\Wahrscheinlichkeiten\obj\Debug\Wahrscheinlichkeiten.csproj.CoreCompileInputs.cache
 C:\Users\DELL\OneDrive\Desktop\github\Zonk\Wahrscheinlichkeiten\obj\Debug\Wahrscheinlichkeiten.exe
 C:\Users\DELL\OneDrive\Desktop\github\Zonk\Wahrscheinlichkeiten\obj\Debug\Wahrscheinlichkeiten.pdb
+C:\Users\Mohammad.El-Masri\Desktop\github\Zonk\Wahrscheinlichkeiten\bin\Debug\Wahrscheinlichkeiten.exe.config
+C:\Users\Mohammad.El-Masri\Desktop\github\Zonk\Wahrscheinlichkeiten\bin\Debug\Wahrscheinlichkeiten.exe
+C:\Users\Mohammad.El-Masri\Desktop\github\Zonk\Wahrscheinlichkeiten\bin\Debug\Wahrscheinlichkeiten.pdb
+C:\Users\Mohammad.El-Masri\Desktop\github\Zonk\Wahrscheinlichkeiten\obj\Debug\Wahrscheinlichkeiten.csproj.AssemblyReference.cache
+C:\Users\Mohammad.El-Masri\Desktop\github\Zonk\Wahrscheinlichkeiten\obj\Debug\Wahrscheinlichkeiten.csproj.SuggestedBindingRedirects.cache
+C:\Users\Mohammad.El-Masri\Desktop\github\Zonk\Wahrscheinlichkeiten\obj\Debug\Wahrscheinlichkeiten.csproj.CoreCompileInputs.cache
+C:\Users\Mohammad.El-Masri\Desktop\github\Zonk\Wahrscheinlichkeiten\obj\Debug\Wahrscheinlichkeiten.exe
+C:\Users\Mohammad.El-Masri\Desktop\github\Zonk\Wahrscheinlichkeiten\obj\Debug\Wahrscheinlichkeiten.pdb

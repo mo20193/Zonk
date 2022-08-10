@@ -4,20 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//const und readonly anschauen
-//static = klassenvariable
+//es soll 100.000 x mit 10%, 20% usw bis 90% spielen. dann soll er mir sagen wie oft er von 100000 gewonnen hat.
+//bei welcher prozentzahl ist die wahrscheinlichkeit am höchsten zu gewinnen
 
-//es soll 1000x mit 10%, 20% usw bis 90% spielen(in einem durchlauf) 1 Spiel == 100 durchläufe
-//es soll sich bei 10% seine avg der wins festhalten über die 1000 spiele. das auch bei 20%, 30% usw! am ende ausgeben beispiel:
-//10% AVG: Anzahl der gewonnenen spiele, auch bei 20, 30 usw
+//er spielt 100k bei 10% und sagt zb: 100 mal gewonnen
+//dann spielt er 100k bei 20% und sagt zb: 200 ma gewonnen
+//usw bis 90%
+//Am ende haben wir 9 Werte. Automatisiert soll nun ausgegeben werden, bei welkcher prozentzahl es am wahrscheinlichsten ist zu gewinnen
 
-//1 Durchlauf(100 spiele): WIN: 10
-//2.Durchlauf(100 spiele): WIN: 09
-//3.Durchlauf(100 spiele): WIN: 12
-
-//Aus diesen Werten, also 10, 09, 12 muss dann der durchschnitt ausgerechnet. AVG Selber programmieren!
-
-//Code refactorisierung -> so wenig static wie möglich. Methodem grundsätzlich das übergeben was sie brauchen, um zu funktionieren
+ //Ich habe 100 karten
+ //10% spiele ich, heißt mein set sind 10 karten drinne.
+ //dann ziehe ich weiter, wenn eine karte kommt die kleiner ist als die max zahl im set, ziehe ich weiter
+ //ziehe ich eine zahl die größer ist als meine max zahl im set, dann sage ich das ist die max zahl
+ //und prüfe dann meine currentlyNumberAfterSet mit maxnumber in list. siend diese == = win, wenn nicht lost
 
 namespace Wahrscheinlichkeiten
 {
@@ -29,10 +28,10 @@ namespace Wahrscheinlichkeiten
 
         private const int _min = 0;
         private const int _max = 101;
-        private const int _percent = 4;
+        private const int _percent = 10;
 
         private static int _turns = 0;
-        private static int _currentlyNumberAfterCheck = 0;
+        private static int _currentlyNumberAfterSet = 0;
         private static int _maxNumberInSet = 0;
         private static int _maxNumberInList = 0;
         private static int _i = 0;
@@ -42,10 +41,10 @@ namespace Wahrscheinlichkeiten
 
         static void Main(string[] args)
         {
-            for (int j = 0; j < _max; j++)
+            for (int j = 1; j < _max; j++)
             {
                 Reset();
-                
+                //liste wird befüllt
                 InitializeList(_listOfNumbers);
 
                 _maxNumberInList = GetMaxNumber();
@@ -57,19 +56,19 @@ namespace Wahrscheinlichkeiten
 
                 do
                 {
-                    _currentlyNumberAfterCheck = _listOfNumbers[_i];
+                    _currentlyNumberAfterSet = _listOfNumbers[_i]; 
                     _i++;
+                    //solange die currentlynrAfterSet  kleiner ist als maxNumberInSet, mache weiter
+                } while (!IsAssumedMaxNumber() && _i < _max);
 
-                } while (!AssumedMaxNumber() && _i < _max);
-
-                if (_currentlyNumberAfterCheck == _maxNumberInList)
+                if (_currentlyNumberAfterSet == _maxNumberInList)
                 {                    
-                    Console.WriteLine($"W I N. AssumedMaxNumber: {_currentlyNumberAfterCheck} ActualMaxNumber {_maxNumberInList} index: {_i}" );
+                    Console.WriteLine($"W I N. CurrentlyNumber: {_currentlyNumberAfterSet} MaxNumberInList: {_maxNumberInList} index: {_i}" );
                     _numberOfWinnings++;
-                }
+                } 
                 else
                 {
-                    Console.WriteLine($"L O S T. AssumedMaxNumber: {_currentlyNumberAfterCheck} ActualMaxNumber {_maxNumberInList} index: {_i}.");
+                    Console.WriteLine($"L O S T. CurrentlyNumber: {_currentlyNumberAfterSet} MaxNumberInList: {_maxNumberInList} index: {_i}.");
                 }
                 
                 Console.WriteLine("Round: " + j + " --------------------------------------------------------------------------------------------------");
@@ -87,9 +86,9 @@ namespace Wahrscheinlichkeiten
             _i = 0;
         }
 
-        private static bool AssumedMaxNumber() //angenommen, vermutlich
+        private static bool IsAssumedMaxNumber()
         {
-            if (_currentlyNumberAfterCheck > _maxNumberInSet)
+            if (_currentlyNumberAfterSet > _maxNumberInSet)
             {
                 return true;
             }
@@ -167,8 +166,10 @@ namespace Wahrscheinlichkeiten
 
             while (_list.Count < _max)
             {
+                //Holt sich eine rnd zwischen min und max, also 0 und 1001
                 currentNumber = GetRandom();
 
+                //Wenn currentNumber nicht in der _listOfNumbers ist, dann füge diese nummer hinzu
                 if (!_list.Contains(currentNumber))
                 {
                     _list.Add(currentNumber);
