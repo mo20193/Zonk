@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//new
 //es soll 100.000 x mit 10%, 20% usw bis 90% spielen. dann soll er mir sagen wie oft er von 100000 gewonnen hat.
 //bei welcher prozentzahl ist die wahrscheinlichkeit am höchsten zu gewinnen
 
